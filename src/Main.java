@@ -1,11 +1,8 @@
-import java.sql.SQLOutput;
-import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
         System.out.println("How many chips do you want?");
-        int chips = InputUtil.getIntInput();
+        int chips = InputUtil.getIntInput(Integer.MAX_VALUE);
         int counter = 1;
         while (chips > 0) {
             System.out.println("ROUND " + counter);
@@ -14,6 +11,6 @@ public class Main {
             chips = gs.run();
             counter++;
         }
-        System.out.println("ended main class");
+        System.out.println("You're out of chips. Thanks for playing");
     }
 }

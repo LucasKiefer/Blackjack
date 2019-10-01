@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class InputUtil {
-    public static int getIntInput() {
+    public static int getIntInput(int maximum) {
         Scanner input = new Scanner(System.in);
         boolean inputChecker = false;
         while (true) {
@@ -9,7 +9,9 @@ public class InputUtil {
                 String chipsString = input.nextLine();
                 int chips = Integer.parseInt(chipsString);
                 if (chips <= 0) {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("That's not positive! Try a positive number.");
+                } else if (chips > maximum) {
+                    throw new IllegalArgumentException("That's too big! Try a smaller number.");
                 }
                 return chips;
             }
@@ -17,11 +19,11 @@ public class InputUtil {
                 System.out.println("That's not an integer! Try an actual integer.");
             }
             catch(IllegalArgumentException e) {
-                System.out.println("That's not positive! Try a positive number");
+                System.out.println(e.getMessage());
             }
         }
     }
-    //Returns true if the value is a hit and false if it's a pass
+    //Returns true if the value is a hit and false if it's a stand
     public static boolean getHitInput() {
         Scanner input = new Scanner(System.in);
         boolean inputChecker = false;
@@ -31,10 +33,10 @@ public class InputUtil {
                 string.toLowerCase();
                 if (string.equals("hit")) {
                     return true;
-                } else if (string.equals("pass")) {
+                } else if (string.equals("stand")) {
                     return false;
                 }
-                System.out.println("Please type hit or pass.");
+                System.out.println("Please type hit or stand.");
         }
     }
 }

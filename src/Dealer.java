@@ -14,6 +14,9 @@ public class Dealer {
     public Card getSeen() {
         return hand.get(0);
     }
+    public Card getUnseen() {
+        return hand.get(1);
+    }
 
 
     public boolean playHand(Deck deck) {
