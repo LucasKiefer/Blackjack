@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class GameState {
-    Deck deck;
-    Player player;
-    Dealer dealer;
-    int startingChips;
+    private Deck deck;
+    private Player player;
+    private Dealer dealer;
+    private int startingChips;
     public GameState(int startingchips) {
         this.startingChips = startingchips;
         this.deck = new Deck();
@@ -14,7 +14,7 @@ public class GameState {
         hand.add(deck.draw());
         this.player = new Player(hand);
     }
-    public void printState() {
+    private void printState() {
         System.out.println("The dealer has a " + dealer.getSeen() + " and an unknown card. You have a ");
         for (int i = 0; i < player.getHand().size() - 1; i++) {
             System.out.print(" a " + player.getHand().get(i) + ", ");
@@ -40,8 +40,7 @@ public class GameState {
             System.out.println("You have blackjack! You get double chips back!");
             return startingChips + bet * 2;
         }
-        boolean gameActive = true;
-        while (gameActive) {
+        while (true) {
             this.printState();
             System.out.println("Would you like to hit or stand?");
             if (InputUtil.getHitInput()) {
@@ -52,7 +51,6 @@ public class GameState {
                     return startingChips - bet;
                 }
             } else {
-                gameActive = false;
                 if (dealer.playHand(deck)) {
                     if (dealer.sumHand() > player.sumHand()) {
                         System.out.println("Your total was " + player.sumHand() + ", so the dealer wins!");
@@ -71,7 +69,6 @@ public class GameState {
                 }
             }
         }
-        return startingChips - bet;
     }
 
 }

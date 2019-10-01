@@ -10,7 +10,7 @@ public class Card {
         return cardValue;
     }
 
-    public Suit getSuit() {
+    private Suit getSuit() {
         return suit;
     }
 

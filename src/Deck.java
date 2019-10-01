@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class Deck {
     private ArrayList<Card> deck = new ArrayList<Card>(54);
-    Random random = new Random();
+    private Random random = new Random();
     public Deck() {
         for (int value = 0; value < CardValue.values().length; value++) {
             for (int suit = 0; suit < Suit.values().length; suit++) {
